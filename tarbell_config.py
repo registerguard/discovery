@@ -5,7 +5,7 @@ Tarbell project configuration
 """
 
 # Google spreadsheet key
-#SPREADSHEET_KEY = "None"
+SPREADSHEET_KEY = "1CIiWvFX-ecB0oYDEhNcyw2pCsMrK2MUX04Bu33BqXKo"
 
 # Exclude these files from publication
 EXCLUDES = ["*.md", "requirements.txt"]
@@ -17,7 +17,7 @@ EXCLUDES = ["*.md", "requirements.txt"]
 # CREATE_JSON = True
 
 # Get context from a local file or URL. This file can be a CSV or Excel
-# spreadsheet file. Relative, absolute, and remote (http/https) paths can be 
+# spreadsheet file. Relative, absolute, and remote (http/https) paths can be
 # used.
 # CONTEXT_SOURCE_FILE = ""
 
@@ -32,8 +32,9 @@ S3_BUCKETS = {
     # Provide target -> s3 url pairs, such as:
     #     "mytarget": "mys3url.bucket.url/some/path"
     # then use tarbell publish mytarget to publish to it
-    
+
     "staging": "uploads.registerguard.com/discovery",
+    "production":  "cloud.registerguard.com/discovery",
 }
 
 # Default template variables
@@ -52,3 +53,23 @@ DEFAULT_CONTEXT = {
     'name': 'discovery',
     'title': 'Discovery 2015'
 }
+
+# Blueprint
+from flask import Blueprint, Response, g, render_template
+
+blueprint = Blueprint('discovery', __name__)
+
+@blueprint.route('/campgrounds/print/mac/')
+def mac_stuff():
+    # look for template.render here: https://tarbell.readthedocs.org/en/1.0/hooks.html
+    context = g.current_site.get_context()
+    the_text = render_template('campgrounds/print.html', **context)
+    the_response = Response(the_text, mimetype='application/json')
+    the_response.headers['Content-Disposition'] = 'attachment; filename=foo_bar.txt'
+    return the_response
+
+@blueprint.route('/campgrounds/print/win/')
+def win_stuff():
+    the_response = Response('Hah InDesign! Hah!', mimetype='application/json')
+    the_response.headers['Content-Disposition'] = 'attachment; filename=foo_bar.txt'
+    return the_response
