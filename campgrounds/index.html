@@ -1,0 +1,31 @@
+{% extends "_base.html" %}
+
+{% block content %}
+<div class="container">
+	<div class="jumbotron">
+		<h1>Lane County campgrounds</h1>
+		<p>This page is pulling data from <a href="https://docs.google.com/spreadsheets/d/1CIiWvFX-ecB0oYDEhNcyw2pCsMrK2MUX04Bu33BqXKo/edit?usp=sharing" target="_blank">this Google Sheet</a>.</p>
+		{% for data in campgrounds %}
+			{% if data.area != previous_area %}<h2>{{ data.area }}</h2>{% endif %}
+			{% set previous_area = data.area %}
+			<h3>{{ data.campground }}</h3>
+			<h4>{{ data.operator }}</h4>
+			<ul>
+				<li>{{ data.point_1 }}</li>
+				<li>{{ data.point_2 }}</li>
+				<li>{{ data.point_3 }}</li>
+				<li>{{ data.point_4 }}</li>
+				<li>{{ data.point_5 }}</li>
+				{% if data.point_6 %}<li>{{ data.point_6 }}</li>{% endif %}
+				{% if data.point_7 %}<li>{{ data.point_7 }}</li>{% endif %}
+				{% if data.point_8 %}<li>{{ data.point_8 }}</li>{% endif %}
+				{% if data.point_9 %}<li>{{ data.point_9 }}</li>{% endif %}
+				{% if data.point_10 %}<li>{{ data.point_10 }}</li>{% endif %}
+				{% if data.point_11 %}<li>{{ data.point_11 }}</li>{% endif %}
+				{% if data.point_12 %}<li>{{ data.point_12 }}</li>{% endif %}
+			</ul>
+		{% endfor %}
+	</div>
+</div>
+{% endblock content %}
+
