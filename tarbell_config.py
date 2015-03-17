@@ -61,8 +61,8 @@ blueprint = Blueprint('discovery', __name__)
 
 @blueprint.route('/campgrounds/print/mac/')
 def mac_stuff():
-    # look for template.render here: https://tarbell.readthedocs.org/en/1.0/hooks.html
     context = g.current_site.get_context()
+    context['os'] = 'MAC'
     the_text = render_template('campgrounds/print.html', **context)
     the_response = Response(the_text, mimetype='application/json')
     the_response.headers['Content-Disposition'] = 'attachment; filename=foo_bar.txt'
@@ -70,6 +70,9 @@ def mac_stuff():
 
 @blueprint.route('/campgrounds/print/win/')
 def win_stuff():
-    the_response = Response('Hah InDesign! Hah!', mimetype='application/json')
+    context = g.current_site.get_context()
+    context['os'] = 'WIN'
+    the_text = render_template('campgrounds/print.html', **context)
+    the_response = Response(the_text, mimetype='application/json')
     the_response.headers['Content-Disposition'] = 'attachment; filename=foo_bar.txt'
     return the_response
