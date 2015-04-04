@@ -61,6 +61,7 @@ blueprint = Blueprint('discovery', __name__)
 
 @blueprint.route('/campgrounds/print/mac/')
 def mac_stuff():
+    # https://www.google.com/search?q=indesign+tagged+text+utf-16+little-endian&ie=utf-8&oe=utf-8
     context = g.current_site.get_context()
     context['os'] = 'MAC'
     the_text = render_template('campgrounds/print.html', **context)
