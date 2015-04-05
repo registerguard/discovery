@@ -77,6 +77,7 @@ def mac_stuff():
 
 @blueprint.route('/campgrounds/print/win/')
 def win_stuff():
+    # http://stackoverflow.com/questions/17159236/creating-utf-16-newline-characters-in-python-for-windows-notepad
     context = g.current_site.get_context()
     context['os'] = 'WIN'
     the_text = render_template('campgrounds/print_win.html', **context)
