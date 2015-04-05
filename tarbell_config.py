@@ -1,5 +1,8 @@
 # -*- coding: utf-8 -*-
 
+import codecs
+import datetime
+
 """
 Tarbell project configuration
 """
@@ -59,21 +62,27 @@ from flask import Blueprint, Response, g, render_template
 
 blueprint = Blueprint('discovery', __name__)
 
+id_file_timestamp = '%s' % datetime.datetime.now().strftime('%Y-%m-%d-%I-%M-%S-%p')
+
 @blueprint.route('/campgrounds/print/mac/')
 def mac_stuff():
-    # https://www.google.com/search?q=indesign+tagged+text+utf-16+little-endian&ie=utf-8&oe=utf-8
     context = g.current_site.get_context()
     context['os'] = 'MAC'
-    the_text = render_template('campgrounds/print.html', **context)
-    the_response = Response(the_text, mimetype='application/json')
-    the_response.headers['Content-Disposition'] = 'attachment; filename=foo_bar.txt'
+    the_text = render_template('campgrounds/print_mac.html', **context)
+    the_text = the_text.encode('utf-16-le')
+    the_text = codecs.BOM_UTF16_LE + the_text
+    the_response = Response(the_text, mimetype='text/plain')
+    the_response.headers['Content-Disposition'] = 'attachment; filename=%s.txt' % id_file_timestamp
     return the_response
 
 @blueprint.route('/campgrounds/print/win/')
 def win_stuff():
     context = g.current_site.get_context()
     context['os'] = 'WIN'
-    the_text = render_template('campgrounds/print.html', **context)
-    the_response = Response(the_text, mimetype='application/json')
-    the_response.headers['Content-Disposition'] = 'attachment; filename=foo_bar.txt'
+    the_text = render_template('campgrounds/print_win.html', **context)
+    the_text = the_text.encode('utf-16')
+    the_text = the_text.decode('utf-16').replace(u'\n', u'\r\n')
+    the_text = codecs.BOM_UTF16 + the_text.encode('utf-16')
+    the_response = Response(the_text, mimetype='text/plain; charset=utf-16')
+    the_response.headers['Content-Disposition'] = 'attachment; filename=%s.txt' % id_file_timestamp
     return the_response
