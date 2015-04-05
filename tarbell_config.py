@@ -83,6 +83,6 @@ def win_stuff():
     the_text = the_text.encode('utf-16')
     the_text = the_text.decode('utf-16').replace(u'\n', u'\r\n')
     the_text = codecs.BOM_UTF16 + the_text.encode('utf-16')
-    the_response = Response(the_text, mimetype='text/plain; charset=utf-16')
+    the_response = Response(the_text, mimetype='text/plain')
     the_response.headers['Content-Disposition'] = 'attachment; filename=%s.txt' % id_file_timestamp
     return the_response
