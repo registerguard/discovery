@@ -77,13 +77,13 @@ def mac_stuff():
 
 @blueprint.route('/campgrounds/print/win/')
 def win_stuff():
-    # http://stackoverflow.com/questions/17159236/creating-utf-16-newline-characters-in-python-for-windows-notepad
     context = g.current_site.get_context()
     context['os'] = 'WIN'
     the_text = render_template('campgrounds/print_win.html', **context)
-    the_text = the_text.encode('utf-16')
-    the_text = the_text.decode('utf-16').replace(u'\n', u'\r\n')
-    the_text = codecs.BOM_UTF16 + the_text.encode('utf-16')
+    # make the line endings Windows
+    the_text = the_text.replace(u'\n', u'\r\n')
+    # make it utf-16le, what Windows calls 'Unicode'
+    the_text = the_text.encode('utf-16-le')
     the_response = Response(the_text, mimetype='text/plain')
     the_response.headers['Content-Disposition'] = 'attachment; filename=%s.txt' % id_file_timestamp
     return the_response
