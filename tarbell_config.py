@@ -1,6 +1,5 @@
 # -*- coding: utf-8 -*-
 
-import codecs
 import datetime
 
 """
@@ -74,5 +73,5 @@ def indesign_tagged_text():
     # make it utf-16le, what Windows calls 'Unicode'
     the_text = the_text.encode('utf-16-le')
     the_response = Response(the_text, mimetype='text/plain')
-    the_response.headers['Content-Disposition'] = 'attachment; filename=win-campgrounds-%s.txt' % id_file_timestamp
+    the_response.headers['Content-Disposition'] = 'attachment; filename=campgrounds-%s.txt' % id_file_timestamp
     return the_response
