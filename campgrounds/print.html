@@ -7,10 +7,11 @@
 <dps:Discovery\:dsc\_reverse\_box\_type\_oneline=<Nextstyle:Discovery\:dsc\_head\_list><ct:Black><cs:9.000000><cbs:-2.500000><pli:6.000000><pri:6.000000><palp:1.000000><cl:10.000000><psa:11.000000><cf:Franklin ITC Std><prbc:Black><prbs:20.000000><prbo:-10.000000><prbon:1><pta:Center><pga:BaseLine>>
 <dps:Discovery\:dsc\_phone\_list=<BasedOn:NormalParagraphStyle><ct:Light><pli:6.000000><ptr:6\,Left\,.\,0\,\;><cf:Franklin ITC Std><pga:BaseLine>>
 <sstable:=<RG\_Oxford:STRIPE:0,0.45,0.46,0.08999999999999997>>
-{% for data in campgrounds %}{% if data.area != previous_area %}<pstyle:Discovery\:dsc\_head\_list>
-<pstyle:Discovery\:dsc\_reverse\_box\_type\_oneline><psa:17.999999><pga:None><cc:Paper>{{ data.area }}
-{% endif %}{% if not loop.first %}<pga:><pstyle:Discovery\:dsc\_head\_list><pga:None>
-{% endif %}<pga:><pstyle:Discovery\:dsc\_head\_list><psa:1.000000><pga:None>{{ data.campground }}
+{% for data in campgrounds %}{% if data.area != previous_area %}{% if not loop.first %}<pstyle:Discovery\:dsc\_head\_list><pga:None>
+{% endif %}<pstyle:Discovery\:dsc\_reverse\_box\_type\_oneline><psb:2.000000><psa:19.500000><pga:None><cc:Paper>{{ data.area }}<cc:>
+{% else %}<pga:><pstyle:Discovery\:dsc\_head\_list><pga:None>
+{% endif %}<pga:><pstyle:Discovery\:dsc\_head\_list><psa:0.500000><pga:None>{{ data.campground }}
+<pga:><pstyle:Discovery\:dsc\_italic\_list><pga:None>{{ data.operator }}
 <pga:><pstyle:Discovery\:dsc\_bullet\_list><pga:None>{{ data.point_1 }}
 <pga:><pstyle:Discovery\:dsc\_bullet\_list><pga:None>{{ data.point_2 }}
 <pga:><pstyle:Discovery\:dsc\_bullet\_list><pga:None>{{ data.point_3 }}
