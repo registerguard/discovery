@@ -1,4 +1,4 @@
-<UNICODE-{{ os }}>
+{% autoescape false %}<UNICODE-{{ os }}>
 <vsn:6><fset:InDesign-Roman><ctable:=<RG\_Black\_60:COLOR:CMYK:Process:0,0,0,0.6><Black:COLOR:CMYK:Process:0,0,0,1><Paper:COLOR:CMYK:Process:0,0,0,0>>
 <dps:NormalParagraphStyle=<Nextstyle:NormalParagraphStyle><cs:9.500000><cl:10.000000><cf:MillerDailyTwo><bnc:None><nmf:\<TextFont\>>>
 <dps:Discovery\:dsc\_bullet\_list=<ct:Light><cs:8.500000><palp:1.000000><cl:10.000000><ptr:6\,Left\,.\,0\,\;><cf:Franklin ITC Std><pga:BaseLine><bnlt:Bullet><bnc:None><nmf:\<TextFont\>>>
@@ -24,4 +24,4 @@
 {% if data.point_10 %}<pga:><pstyle:Discovery\:dsc\_bullet\_list><pga:None>{{ data.point_10 }}
 {% if data.point_11 %}<pga:><pstyle:Discovery\:dsc\_bullet\_list><pga:None>{{ data.point_11 }}
 {% if data.point_12 %}<pga:><pstyle:Discovery\:dsc\_bullet\_list><pga:None>{{ data.point_12 }}
-{% endif %}{% endif %}{% endif %}{% endif %}{% endif %}{% endif %}{% endif %}{% set previous_area = data.area %}{% endfor %}
+{% endif %}{% endif %}{% endif %}{% endif %}{% endif %}{% endif %}{% endif %}{% set previous_area = data.area %}{% endfor %}{% endautoescape %}
