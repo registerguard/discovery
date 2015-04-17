@@ -1,4 +1,4 @@
-<UNICODE-{{ os }}>
+{% autoescape false %}<UNICODE-{{ os }}>
 <vsn:6><fset:InDesign-Roman><ctable:=<RG\_Black\_60:COLOR:CMYK:Process:0,0,0,0.6><Black:COLOR:CMYK:Process:0,0,0,1><Paper:COLOR:CMYK:Process:0,0,0,0>>
 <dps:NormalParagraphStyle=<Nextstyle:NormalParagraphStyle><cs:9.500000><cl:10.000000><cf:MillerDailyTwo><bnc:None><nmf:\<TextFont\>>>
 <dps:Discovery\:dsc\_bullet\_list=<ct:Light><cs:8.500000><palp:1.000000><cl:10.000000><ptr:6\,Left\,.\,0\,\;><cf:Franklin ITC Std><pga:BaseLine><bnlt:Bullet><bnc:None><nmf:\<TextFont\>>>
@@ -7,11 +7,11 @@
 <dps:Discovery\:dsc\_reverse\_box\_type\_oneline=<Nextstyle:Discovery\:dsc\_head\_list><ct:Black><cs:9.000000><cbs:-2.500000><pli:6.000000><pri:6.000000><palp:1.000000><cl:10.000000><psa:11.000000><cf:Franklin ITC Std><prbc:Black><prbs:20.000000><prbo:-10.000000><prbon:1><pta:Center><pga:BaseLine>>
 <dps:Discovery\:dsc\_phone\_list=<BasedOn:NormalParagraphStyle><ct:Light><pli:6.000000><ptr:6\,Left\,.\,0\,\;><cf:Franklin ITC Std><pga:BaseLine>>
 <sstable:=<RG\_Oxford:STRIPE:0,0.45,0.46,0.08999999999999997>>
-{% for data in breweries %}{% if data.area != previous_area %}<pstyle:Discovery\:dsc\_head\_list>
-<pstyle:Discovery\:dsc\_reverse\_box\_type\_oneline><psa:17.999999><pga:None><cc:Paper>{{ data.area }}
-{% endif %}{% if not loop.first %}<pga:><pstyle:Discovery\:dsc\_head\_list><pga:None>
-{% endif %}<pga:><pstyle:Discovery\:dsc\_head\_list><psa:1.000000><pga:None>{{ data.name }}
-<pga:><pstyle:Discovery\:dsc\_bullet\_list><pga:None>{{ data.operator_address }}
+{% for data in breweries %}{% if data.area != previous_area %}{% if not loop.first %}<pstyle:Discovery\:dsc\_head\_list><pga:None>
+{% endif %}<pstyle:Discovery\:dsc\_reverse\_box\_type\_oneline><psb:2.000000><psa:19.500000><pga:None><cc:Paper>{{ data.area }}<cc:>
+{% else %}<pga:><pstyle:Discovery\:dsc\_head\_list><pga:None>
+{% endif %}<pga:><pstyle:Discovery\:dsc\_head\_list><psa:0.500000><pga:None>{{ data.name }}
+<pga:><pstyle:Discovery\:dsc\_italic\_list><pga:None>{{ data.operator_address }}
 <pga:><pstyle:Discovery\:dsc\_bullet\_list><pga:None>{{ data.point_1 }}
 <pga:><pstyle:Discovery\:dsc\_bullet\_list><pga:None>{{ data.point_2 }}
 <pga:><pstyle:Discovery\:dsc\_bullet\_list><pga:None>{{ data.point_3 }}
@@ -24,4 +24,4 @@
 {% if data.point_10 %}<pga:><pstyle:Discovery\:dsc\_bullet\_list><pga:None>{{ data.point_10 }}
 {% if data.point_11 %}<pga:><pstyle:Discovery\:dsc\_bullet\_list><pga:None>{{ data.point_11 }}
 {% if data.point_12 %}<pga:><pstyle:Discovery\:dsc\_bullet\_list><pga:None>{{ data.point_12 }}
-{% endif %}{% endif %}{% endif %}{% endif %}{% endif %}{% endif %}{% endif %}{% set previous_area = data.area %}{% endfor %}
+{% endif %}{% endif %}{% endif %}{% endif %}{% endif %}{% endif %}{% endif %}{% set previous_area = data.area %}{% endfor %}{% endautoescape %}
