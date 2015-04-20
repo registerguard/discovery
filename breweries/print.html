@@ -16,7 +16,7 @@
 <pga:><pstyle:Discovery\:dsc\_bullet\_list><pga:None>{{ data.point_2 }}
 <pga:><pstyle:Discovery\:dsc\_bullet\_list><pga:None>{{ data.point_3 }}
 <pga:><pstyle:Discovery\:dsc\_bullet\_list><pga:None>{{ data.point_4 }}
-<pga:><pstyle:Discovery\:dsc\_bullet\_list><pga:None>{{ data.point_5 }}
+{% if data.point_5 %}<pga:><pstyle:Discovery\:dsc\_bullet\_list><pga:None>{{ data.point_5 }}
 {% if data.point_6 %}<pga:><pstyle:Discovery\:dsc\_bullet\_list><pga:None>{{ data.point_6 }}
 {% if data.point_7 %}<pga:><pstyle:Discovery\:dsc\_bullet\_list><pga:None>{{ data.point_7 }}
 {% if data.point_8 %}<pga:><pstyle:Discovery\:dsc\_bullet\_list><pga:None>{{ data.point_8 }}
@@ -24,4 +24,4 @@
 {% if data.point_10 %}<pga:><pstyle:Discovery\:dsc\_bullet\_list><pga:None>{{ data.point_10 }}
 {% if data.point_11 %}<pga:><pstyle:Discovery\:dsc\_bullet\_list><pga:None>{{ data.point_11 }}
 {% if data.point_12 %}<pga:><pstyle:Discovery\:dsc\_bullet\_list><pga:None>{{ data.point_12 }}
-{% endif %}{% endif %}{% endif %}{% endif %}{% endif %}{% endif %}{% endif %}{% set previous_area = data.area %}{% endfor %}{% endautoescape %}
+{% endif %}{% endif %}{% endif %}{% endif %}{% endif %}{% endif %}{% endif %}{% endif %}{% set previous_area = data.area %}{% endfor %}{% endautoescape %}
