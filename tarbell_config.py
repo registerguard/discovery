@@ -136,6 +136,21 @@ def golf_indesign_tagged_text():
     the_response.headers['Content-Disposition'] = 'attachment; filename=golf-%s.txt' % id_file_timestamp
     return the_response
 
+@blueprint.route('/museums/print/')
+def museums_indesign_tagged_text():
+    id_file_timestamp = '%s' % datetime.datetime.now().strftime('%Y-%m-%d-%I-%M-%S-%p')
+
+    context = g.current_site.get_context()
+    context['os'] = 'WIN'
+    the_text = render_template('museums/print.html', **context)
+    # make the line endings Windows
+    the_text = the_text.replace(u'\n', u'\r\n')
+    # make it utf-16le, what Windows calls 'Unicode'
+    the_text = the_text.encode('utf-16-le')
+    the_response = Response(the_text, mimetype='text/plain')
+    the_response.headers['Content-Disposition'] = 'attachment; filename=museums-%s.txt' % id_file_timestamp
+    return the_response
+
 @blueprint.route('/wineries/print/')
 def wineries_indesign_tagged_text():
     id_file_timestamp = '%s' % datetime.datetime.now().strftime('%Y-%m-%d-%I-%M-%S-%p')
