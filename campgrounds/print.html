@@ -9,7 +9,7 @@
 {% for data in campgrounds %}{% if data.area != previous_area %}{% if not loop.first %}<pstyle:Discovery\:dsc\_head\_list>
 {% endif %}<pstyle:Discovery\:dsc\_reverse\_box\_type\_oneline>{{ data.area }}
 {% else %}<pstyle:Discovery\:dsc\_head\_list>
-{% endif %}<pstyle:Discovery\:dsc\_head\_list>{{ data.campground }}
+{% endif %}<pstyle:Discovery\:dsc\_head\_list>{{ data.name }}
 <pstyle:Discovery\:dsc\_italic\_list>{{ data.operator }}
 <pstyle:Discovery\:dsc\_bullet\_list>{{ data.point_1 }}
 <pstyle:Discovery\:dsc\_bullet\_list>{{ data.point_2 }}

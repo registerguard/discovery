@@ -81,7 +81,7 @@ def campgrounds_indesign_tagged_text():
     id_file_timestamp = '%s' % datetime.datetime.now().strftime('%Y-%m-%d-%I-%M-%S-%p')
 
     context = g.current_site.get_context()
-    context['os'] = 'WIN'
+    context['os'] = u'WIN'
     the_text = render_template('campgrounds/print.html', **context)
     # make the line endings Windows
     the_text = the_text.replace(u'\n', u'\r\n')
@@ -165,4 +165,3 @@ def wineries_indesign_tagged_text():
     the_response = Response(the_text, mimetype='text/plain')
     the_response.headers['Content-Disposition'] = 'attachment; filename=wineries-%s.txt' % id_file_timestamp
     return the_response
-
