@@ -53,6 +53,7 @@
 		{% endfor %}
 		]
 	};
+	var markers = L.markerClusterGroup();
 	var dataLayer = L.geoJson(data, {
 		onEachFeature: function(feature, layer){
 			layer.bindPopup(
@@ -62,6 +63,8 @@
 			);
 		}
 	});
-	map.addLayer(dataLayer);
+	markers.addLayer(dataLayer);
+	map.addLayer(markers);
+	map.fitBounds(markers.getBounds());
 </script>
 {% endblock content %}
