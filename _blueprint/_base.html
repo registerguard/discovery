@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>{% block title %}{{ title|striptags }}{% endblock title %}</title>
+
+  {% block favicon %}
+  <link rel="shortcut icon" href="/favicon{% if preview_mode %}-preview{% endif %}.ico" />
+  {% endblock %}
+
+  {% block library_css %}
+  <link rel="stylesheet" type="text/css" href="http://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.2.0/css/bootstrap.min.css" />
+
+  <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.css" />
+  <script src="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.js"></script>
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/0.4.0/MarkerCluster.Default.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/0.4.0/MarkerCluster.css" />
+  {% endblock library_css %}
+
+  {% block css %}
+  {# http://stackoverflow.com/questions/14526334/bootstrap-anchors-and-body-top-margin-padding#answer-14563699 #}
+  <style>
+    /* Fixing navbar anchor conflict */
+    body {
+        margin-top: 56px;
+    }
+
+    h3 {
+        padding-top: 56px;
+        margin-top: -56px;
+    }
+
+    /* Floating back-to-top link */
+    .back-to-top {
+        display: none;
+        position: fixed; bottom: 30px; right: 50px;
+        width: 80px;
+        height: 25px;
+        padding: 10px;
+        /* background-color: #eee; */
+        font-weight: bold;
+        border-radius: 6px;
+        text-align: center;
+    }
+    .back-to-top:hover {
+        text-decoration: none;
+    }
+  </style>
+  {% endblock %}
+
+  {% block shim %}
+  <!--[if lt IE 9]>
+  <script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+  {% endblock %}
+
+  {% block opengraph %}
+  <meta property="og:url" content="http://{{ ROOT_URL }}/{% if PATH != 'index.html' %}{{ PATH }}{% endif %}" />
+  <meta property="og:title" content="{{ title }}" />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="{{ opengraph_image }}" />
+  <meta property="og:description" content="{{ opengraph_description }}" />
+  {% endblock opengraph %}
+
+  {% block meta %}
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-touch-fullscreen" content="yes">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  {% endblock meta %}
+
+  {% block google_analytics %}
+  {% if GOOGLE_ANALYTICS_ID %}
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', '{{ GOOGLE_ANALYTICS_ID }}']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+
+  </script>
+  {% endif %}
+  {% endblock google_analytics %}
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/0.4.0/leaflet.markercluster-src.js"></script>
+
+</head>
+<body {% block bodyattrs %}class="page-{{ PATH[:-5] }}"{% endblock bodyattrs %}>
+
+{% block nav %}
+  {% include "_nav.html" %}
+{% endblock nav %}
+
+{% block content %}{% endblock content %}
+
+{% block footer %}
+  {% include "_footer.html" %}
+{% endblock footer %}
+
+{% block library_scripts %}
+<script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script src="http://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.2.0/js/bootstrap.min.js"></script>
+{% endblock library_scripts %}
+
+{% block scripts %}
+<script>
+    $(document).ready(function() {
+        $('.navbar-nav').on('click', 'li', function() {
+            $('.navbar-nav li').removeClass('active');
+            $(this).addClass('active');
+        });
+
+        {# http://www.webcoding411.com/2013/09/06/floating-return-to-top-of-page-button/ #}
+        $('.back-to-top').hide();
+        // Check to see if the window is top, if not display button
+        $(window).scroll(function () {
+            if ($(this).scrollTop() > 200) {
+                $('.back-to-top').fadeIn();
+            } else {
+                $('.back-to-top').fadeOut();
+            }
+        });
+
+
+        //Click event to scroll back to top
+        $('.back-to-top').click(function () {
+            $('html, body').animate({ scrollTop: 0}, 800);
+            return false;
+        });
+    });
+</script>
+{% endblock %}
+
+<div class="back-to-top">
+    <a href="#" style="font-size: 3em;">^</a>
+</div>
+
+</body>
+</html>
