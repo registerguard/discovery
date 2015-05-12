@@ -30,6 +30,11 @@
         font-family: Arial,sans-serif;
     }
 
+    .navbar-default .navbar-nav > li > a:hover, .navbar-default .navbar-nav > li > a:focus {
+        background-color: transparent;
+        color: #fff;
+    }
+
     .navbar-default .navbar-brand {
         color: #fff;
     }
@@ -38,7 +43,13 @@
         color: #fff;
     }
 
-    a .navbar-brand {
+    .navbar-header {
+        height: 20px;
+        width: 150px;
+        margin-top: 16px;
+    }
+
+    a.navbar-brand {
         background-image: url("http://zeppelin.registerguard.com/prod/0.1.0/20140911/1/images/trg-300x40-light.png");
         background-repeat: no-repeat;
         background-size: 150px 20px;
@@ -46,6 +57,7 @@
         display: block;
         height: 100%;
         width: 100%;
+        text-indent: -999em;
     }
 
     .jumbotron h1 {
@@ -62,7 +74,7 @@
     .jumbotron {
         padding-top: 10px;
         padding-bottom: 10px;
-        background-color: #f0f0f0;
+        background-color: #fff;
     }
 
     /* Fixing navbar anchor conflict */

@@ -3,7 +3,7 @@
 {% block content %}
 <div class="container">
 	<div class="jumbotron">
-		<h1>Lane County campgrounds</h1>
+		<h1>Lane County area campgrounds</h1>
 		<div id="map" style="width:100%; height:{{ map_height }};"></div>
 		{% for data in campgrounds %}
 			{% if data.area != previous_area %}<h3 class="label">{{ data.area }}</h3>{% endif %}
