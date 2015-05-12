@@ -5,8 +5,6 @@ import datetime
 """
 Tarbell project configuration
 """
-# Google Analytics ID
-GOOGLE_ANALYTICS_ID = 'UA-882065-1'
 
 # Google spreadsheet key
 SPREADSHEET_KEY = "1CIiWvFX-ecB0oYDEhNcyw2pCsMrK2MUX04Bu33BqXKo"
@@ -56,7 +54,8 @@ DEFAULT_CONTEXT = {
                                   'key': u'key2'}},
     'name': 'discovery',
     'title': 'Discovery 2015',
-    'map_height': '380px'
+    'map_height': '380px',
+    'GOOGLE_ANALYTICS_ID': 'UA-882065-1'
 }
 
 # Blueprint
