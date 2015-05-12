@@ -5,6 +5,8 @@ import datetime
 """
 Tarbell project configuration
 """
+# Google Analytics ID
+GOOGLE_ANALYTICS_ID = 'UA-882065-1'
 
 # Google spreadsheet key
 SPREADSHEET_KEY = "1CIiWvFX-ecB0oYDEhNcyw2pCsMrK2MUX04Bu33BqXKo"
