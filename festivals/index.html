@@ -3,15 +3,15 @@
 {% block content %}
 <div class="container">
 	<div class="jumbotron">
-		<div id="map" style="width:100%; height:600px;"></div>
 		<h1>Western Oregon festivals</h1>
+		<div id="map" style="width:100%; height:{{ map_height }};"></div>
 		{% for data in festivals %}
 			{% if data.point_1 %}
-				{% if data.area != previous_area %}<h2>{{ data.area }}</h2>{% endif %}
+				{% if data.area != previous_area %}<h3 class="label">{{ data.area }}</h3>{% endif %}
 				{% set previous_area = data.area %}
-				<h3 id="{{ data.id }}">{{ data.name }}</h3>
-				<h4>{{ data.operator_address }}</h4>
-				<ul>
+				<h5 id="{{ data.id }}">{{ data.name }}</h5>
+				<h2 class="sh6">{{ data.operator_address }}</h2>
+				<ul class="li2">
 					<li>{{ data.point_1 }}</li>
 					<li>{{ data.point_2 }}</li>
 					<li>{{ data.point_3 }}</li>

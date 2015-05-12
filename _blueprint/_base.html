@@ -32,15 +32,42 @@
         color: #fff;
     }
 
+    .navbar-default .navbar-nav > li > a {
+        color: #fff;
+    }
+
+    .jumbotron h1 {
+        font-size: 3em;
+        line-height: 1.03;
+    }
+
+    .container .jumbotron {
+        border-radius: 0;
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+
+    .jumbotron {
+        padding-top: 10px;
+        padding-bottom: 10px;
+        background-color: #f0f0f0;
+    }
+
     /* Fixing navbar anchor conflict */
     {# http://stackoverflow.com/questions/14526334/bootstrap-anchors-and-body-top-margin-padding#answer-14563699 #}
     body {
-        margin-top: 56px;
+        margin-top: 51px;
     }
 
     h3 {
-        padding-top: 56px;
-        margin-top: -56px;
+        padding-top: 51px;
+        margin-top: -51px;
+    }
+
+    /* Discovery Tarbell project CSS */
+    #map {
+        margin-bottom: 6px;
+        margin-top: 14px;
     }
 
     /* Floating back-to-top link */
@@ -92,6 +119,58 @@
   <meta name="apple-touch-fullscreen" content="yes">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
   <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+  <!-- [BEGIN] OpenX -->
+  <link rel="stylesheet" href="http://advertising.registerguard.com/assets/hosted/css/ads.css?v=20141020">
+
+  <script src="//ox-d.registerguard.com/w/1.0/jstag"></script>
+  <script>
+
+  	var _ox = OX();
+
+
+
+  		// Story page:
+  		_ox.addAdUnit('537200296'); // Leaderboard 1
+  		_ox.addAdUnit('537200316'); // Mobile Banner
+  		_ox.addAdUnit('537200298'); // Medium Rectangle 1
+  		_ox.addAdUnit('537200299'); // Medium Rectangle 2
+
+
+
+  		// Content Topics:
+  		_ox.addContentTopic(5009, 'Discovery');
+  		_ox.addContentTopic(19017, 'Outdoor Recreation');
+
+
+
+
+
+  	// ROS:
+  	_ox.addAdUnit('537200302'); // ROS Weather Widget
+  	_ox.addAdUnit('331937');    // ROS Column Block
+  	_ox.addAdUnit('278420');    // ROS Adicio Widget
+  	_ox.addAdUnit('537200304'); // ROS go Widget
+  	_ox.addAdUnit('537200305'); // ROS Medium Rectangle 3
+  	_ox.addAdUnit('537200307'); // ROS Leaderboard Bottom
+  	_ox.addAdUnit('537200312'); // ROS Mobile Banner Bottom
+
+  	// Variables:
+  	_ox.addVariable('bp', ((window.innerWidth <= 1005) ? 'm' : 'd')); // ... return "m" or "d", where 1005px is the break point between "mobile" and "desktop".
+
+
+  		_ox.addVariable('s', 'life');
+  		_ox.addVariable('c', 'discovery');
+
+  		_ox.addVariable('cms-id', '31389887');
+
+
+  	// Get ads:
+  	_ox.fetchAds();
+
+  </script>
+  <!-- [END] OpenX -->
+
   {% endblock meta %}
 
   {% block google_analytics %}
