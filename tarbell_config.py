@@ -53,7 +53,8 @@ DEFAULT_CONTEXT = {
                                   'column2': u'key2, column2',
                                   'key': u'key2'}},
     'name': 'discovery',
-    'title': 'Discovery 2015'
+    'title': 'Discovery 2015',
+    'map_height': '380px'
 }
 
 # Blueprint

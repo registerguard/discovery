@@ -8,6 +8,7 @@
   {% endblock %}
 
   {% block library_css %}
+
   <link rel="stylesheet" type="text/css" href="http://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.2.0/css/bootstrap.min.css" />
 
   <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.css" />
@@ -15,12 +16,24 @@
 
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/0.4.0/MarkerCluster.Default.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/0.4.0/MarkerCluster.css" />
+
+  <link rel="stylesheet" href="http://static.registerguard.com/v5/bulldog/dist/1.0.0/20150504/1/css/bulldog.min.css">
   {% endblock library_css %}
 
   {% block css %}
-  {# http://stackoverflow.com/questions/14526334/bootstrap-anchors-and-body-top-margin-padding#answer-14563699 #}
   <style>
+    /* Relaxing some of the Boostrap  */
+    .navbar, .navbar-default, .navbar-fixed-top {
+        background-color: #000;
+        font-family: Arial,sans-serif;
+    }
+
+    .navbar-default .navbar-brand {
+        color: #fff;
+    }
+
     /* Fixing navbar anchor conflict */
+    {# http://stackoverflow.com/questions/14526334/bootstrap-anchors-and-body-top-margin-padding#answer-14563699 #}
     body {
         margin-top: 56px;
     }
@@ -33,17 +46,29 @@
     /* Floating back-to-top link */
     .back-to-top {
         display: none;
-        position: fixed; bottom: 30px; right: 50px;
-        width: 80px;
-        height: 25px;
+        position: fixed; bottom: 10px; right: 10px;
+        width: 45px;
+        height: 56px;
         padding: 10px;
         /* background-color: #eee; */
         font-weight: bold;
-        border-radius: 6px;
+        /* border-radius: 3px; */
         text-align: center;
+        font-size: 3em;
     }
-    .back-to-top:hover {
+    .back-to-top a:hover {
         text-decoration: none;
+    }
+    .back-to-top a {
+        line-height: 0;
+    }
+
+    /*
+    To counteract Leaflet-hostile "img: max-height: 100%;"" of line 4 in
+    bulldog.min.css
+    */
+    img {
+        max-height: inherit;
     }
   </style>
   {% endblock %}
@@ -136,7 +161,7 @@
 {% endblock %}
 
 <div class="back-to-top">
-    <a href="#" style="font-size: 3em;">^</a>
+    <a href="#">^</a>
 </div>
 
 </body>
