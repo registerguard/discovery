@@ -3,7 +3,23 @@
 {% block content %}
 <div class="container">
 	<div class="jumbotron">
-		<h1>Lane County area festivals</h1>
+		<header>
+			<div id="loc">
+				<hgroup>
+					<div class="streamer">
+						<h1>
+							<a href="http://registerguard.com/rg/life/discovery/">Discovery 2015</a>
+						</h1>
+						<h2>
+							<a href="http://registerguard.com/rg/life/discovery/">Adventure guide</a>
+						</h2>
+					</div>
+				</hgroup>
+			</div>
+		</header>
+		<div class="discovery_headline">
+			<h1>Lane County area festivals</h1>
+		</div>
 		<div id="map" style="width:100%; height:{{ map_height }};"></div>
 		{% for data in festivals %}
 			{% if data.point_1 %}
