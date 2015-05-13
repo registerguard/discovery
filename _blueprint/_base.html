@@ -162,23 +162,15 @@
 
   	var _ox = OX();
 
+	// Story page:
+	_ox.addAdUnit('537200296'); // Leaderboard 1
+	_ox.addAdUnit('537200316'); // Mobile Banner
+	_ox.addAdUnit('537200298'); // Medium Rectangle 1
+	_ox.addAdUnit('537200299'); // Medium Rectangle 2
 
-
-  		// Story page:
-  		_ox.addAdUnit('537200296'); // Leaderboard 1
-  		_ox.addAdUnit('537200316'); // Mobile Banner
-  		_ox.addAdUnit('537200298'); // Medium Rectangle 1
-  		_ox.addAdUnit('537200299'); // Medium Rectangle 2
-
-
-
-  		// Content Topics:
-  		_ox.addContentTopic(5009, 'Discovery');
-  		_ox.addContentTopic(19017, 'Outdoor Recreation');
-
-
-
-
+	// Content Topics:
+	_ox.addContentTopic(5009, 'Discovery');
+	_ox.addContentTopic(19017, 'Outdoor Recreation');
 
   	// ROS:
   	_ox.addAdUnit('537200302'); // ROS Weather Widget
@@ -192,12 +184,10 @@
   	// Variables:
   	_ox.addVariable('bp', ((window.innerWidth <= 1005) ? 'm' : 'd')); // ... return "m" or "d", where 1005px is the break point between "mobile" and "desktop".
 
+	_ox.addVariable('s', 'life');
+	_ox.addVariable('c', 'discovery');
 
-  		_ox.addVariable('s', 'life');
-  		_ox.addVariable('c', 'discovery');
-
-  		_ox.addVariable('cms-id', '31389887');
-
+	_ox.addVariable('cms-id', '31389887');
 
   	// Get ads:
   	_ox.fetchAds();
