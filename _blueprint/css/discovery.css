@@ -1,3 +1,7 @@
+#bd_banner-top{
+	border-bottom: none;
+}
+
 .home-wrap{
 	position: relative;
 }
@@ -43,6 +47,12 @@
 }
 
 @media all and (min-width:992px) and (max-width:1199px){
+	.home-wrap img{
+		max-width: 800px;
+		display: block;
+		margin: 0 auto;
+	}
+	
 	
 	.home-position{
 		max-width: 800px;
@@ -77,7 +87,7 @@
 	}
 	
 	.home-intro p{
-		width: 64%;
+		width: 75%;
 		float:left;
 		font-weight: 900;
 		padding-left: 1%;
