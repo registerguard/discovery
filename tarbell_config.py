@@ -55,7 +55,8 @@ DEFAULT_CONTEXT = {
     'name': 'discovery',
     'title': 'Discovery 2015',
     'map_height': '380px',
-    'GOOGLE_ANALYTICS_ID': 'UA-882065-1'
+    'GOOGLE_ANALYTICS_ID': 'UA-882065-1',
+    'datetime_now': datetime.datetime.now(),
 }
 
 # Blueprint
