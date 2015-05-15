@@ -1,7 +1,11 @@
 /*
-**********************
-Discovery homepage CSS
-**********************
+************************
+************************
+
+ Discovery homepage CSS
+
+************************
+************************
 */
 
 #bd_banner-top{
@@ -110,9 +114,13 @@ Discovery homepage CSS
 }
 
 /*
-**********************
-Index pages
-**********************
+************************
+************************
+
+     Index pages
+
+************************
+************************
 */
 
 /* Relaxing some of the Bootstrap  */
@@ -135,8 +143,8 @@ Index pages
 }
 
 .navbar-header {
-	height: 20px;
-	margin-top: 16px;
+	/*height: 20px;*/
+	/*margin-top: 16px;*/
 }
 
 a.navbar-brand {
@@ -278,9 +286,11 @@ a {
 	}
 }*/
 
+/* http://www.bootply.com/120604# */
+
 @media (max-width: 990px) {
 	.navbar-header {
-		float: none;
+		/*float: none;*/
 	}
 
 	.navbar-left, .navbar-right {
