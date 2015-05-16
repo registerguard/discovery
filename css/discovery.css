@@ -165,6 +165,7 @@
 {# http://stackoverflow.com/questions/14526334/bootstrap-anchors-and-body-top-margin-padding#answer-14563699 #}
 body {
 	margin-top: 51px;
+	-moz-osx-font-smoothing: grayscale;
 }
 
 h5 {
