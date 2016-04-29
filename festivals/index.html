@@ -24,7 +24,8 @@
 		</div>
 		<div id="map" style="width:100%; height:{{ map_height }};"></div>
 		{% for data in festivals %}
-			{% if data.point_1 %}
+			{# Checking to see if start_date has passed, and skipping, if so. #}
+			{% if data.point_1 and data.start_date|format_date('%Y', false, true) > datetime_now %}
 				{% if data.area != previous_area %}<h3 class="label">{{ data.area }}</h3>{% endif %}
 				{% set previous_area = data.area %}
 				<h5 id="{{ data.id }}">{{ data.name }}</h5>
@@ -59,7 +60,8 @@
 		"type": "FeatureCollection",
 		"features": [
 		{% for data in festivals %}
-			{% if data.lat %}
+			{# Checking to see if start_date has passed, and skipping, if so. #}
+			{% if data.lat and data.start_date|format_date('%Y', false, true) > datetime_now %}
 			{
 				"type": "Feature",
 				"properties": {
