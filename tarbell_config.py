@@ -115,7 +115,8 @@ def festivals_json():
     callback_name = request.args.get('callback', '')
     context['callback'] = callback_name
     the_json = render_template('festivals/json.html', **context)
-    the_response = Response(the_json, mimetype='application/json')
+    the_json = the_json.encode('windows-1252')
+    the_response = Response(the_json, mimetype='application/json', content_type='application/json; charset=windows-1252')
     return the_response
 
 @blueprint.route('/golf/print/')

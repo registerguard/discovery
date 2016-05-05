@@ -3,10 +3,10 @@
 		"name": "{{ data.name }}",
 		"start": "{{ data.start_date|format_date('%A, %B %d') }}",
 		"address": "{{ data.operator_address }}",
-		"date_description": "{{ data.point_1 }},
+		"date_description": "{{ data.point_1 }}",
 		"admission": "{{ data.point_2 }}",
 		"description": "{{ data.point_3 }}",
-		"more_info": "{{ data.point_4 }}{{ data.point_5 }}{{ data.point_6 }}{{ data.point_7 }}"
+		"more_info": "{{ data.point_4 }} {{ data.point_5 }} {{ data.point_6 }} {{ data.point_7 }}"
 	}{% if not loop.last %},{% endif %}{% endif %}{% endfor %}]
 	}
 );
