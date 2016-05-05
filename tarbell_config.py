@@ -16,7 +16,7 @@ EXCLUDES = ["*.md", "requirements.txt"]
 # SPREADSHEET_CACHE_TTL = 4
 
 # Create JSON data at ./data.json, disabled by default
-# CREATE_JSON = True
+CREATE_JSON = True
 
 # Get context from a local file or URL. This file can be a CSV or Excel
 # spreadsheet file. Relative, absolute, and remote (http/https) paths can be
@@ -60,7 +60,7 @@ DEFAULT_CONTEXT = {
 }
 
 # Blueprint
-from flask import Blueprint, Response, g, render_template
+from flask import Blueprint, Response, g, render_template, request
 
 blueprint = Blueprint('discovery', __name__)
 
@@ -107,6 +107,15 @@ def festivals_indesign_tagged_text():
     the_text = the_text.encode('utf-16-le')
     the_response = Response(the_text, mimetype='text/plain')
     the_response.headers['Content-Disposition'] = 'attachment; filename=festivals-%s.txt' % id_file_timestamp
+    return the_response
+
+@blueprint.route('/festivals/json')
+def festivals_json():
+    context = g.current_site.get_context()
+    callback_name = request.args.get('callback', '')
+    context['callback'] = callback_name
+    the_json = render_template('festivals/json.html', **context)
+    the_response = Response(the_json, mimetype='application/json')
     return the_response
 
 @blueprint.route('/golf/print/')
