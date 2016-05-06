@@ -112,7 +112,7 @@ def festivals_indesign_tagged_text():
 @blueprint.route('/festivals/json')
 def festivals_json():
     context = g.current_site.get_context()
-    callback_name = request.args.get('callback', '')
+    callback_name = request.args.get('callback', 'festivals_callback')
     context['callback'] = callback_name
     the_json = render_template('festivals/json.html', **context)
     the_json = the_json.encode('windows-1252')
