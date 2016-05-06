@@ -109,7 +109,7 @@ def festivals_indesign_tagged_text():
     the_response.headers['Content-Disposition'] = 'attachment; filename=festivals-%s.txt' % id_file_timestamp
     return the_response
 
-@blueprint.route('/festivals/json/')
+@blueprint.route('/festivals/festivals.json')
 def festivals_json():
     context = g.current_site.get_context()
     callback_name = request.args.get('callback', '%s' % datetime.datetime.now().strftime('%Y%m%d'))
