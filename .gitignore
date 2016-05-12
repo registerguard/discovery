@@ -1,5 +1,6 @@
 .DS_Store
 *.pyc
 discovery
+tarbell_config.py
 _tmp
 _scripts
