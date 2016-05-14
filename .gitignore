@@ -4,3 +4,4 @@ discovery
 tarbell_config.py
 _tmp
 _scripts
+__init__.py
