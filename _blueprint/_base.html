@@ -47,8 +47,8 @@
 			_snaq.push(['setMarket', '431110934']); // Market ID
 
 			_snaq.push(['setSection', '{{ app_label }}']); // Section //gSection.getName()
-			_snaq.push(['setPageType', 'dox']); // Page type (article, blog, gallery, home page, landing page, video)
-			_snaq.push(['setAuthor', '{% firstof object.author object.byline %}']); // Author
+			_snaq.push(['setPageType', 'article']); // Page type (article, blog, gallery, home page, landing page, video)
+			_snaq.push(['setAuthor', '{{ object.author }}']); // Author
 
 			uid && _snaq.push(['setUserId', uid]);
 			_snaq.push(['enableActivityTracking', 30, 10]);
@@ -253,7 +253,7 @@
 			var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(sp, s);
 		})();
 	</script>
-	<noscript><img src='http://www.i.matheranalytics.com/i?e=pv&aid=v1&cid=ma31425&mrk=431110934&p=web&tv=no-js-0.1.0&tid={% now "U" %}' style="display:none" height="1" width="1" alt/></noscript>
+	<noscript><img src='http://www.i.matheranalytics.com/i?e=pv&aid=v1&cid=ma31425&mrk=431110934&p=web&tv=no-js-0.1.0&tid={{ unix_epoch_in_seconds }}' style="display:none" height="1" width="1" alt/></noscript>
 	<!-- [END] Mather Listener -->
 
 </body>
