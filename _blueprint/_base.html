@@ -1,26 +1,82 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>{% block title %}{{ title|striptags }}{% endblock title %}</title>
+	<title>{% block title %}{{ title|striptags }}{% endblock title %}</title>
 
-  {% block favicon %}
-  <link rel="shortcut icon" href="/favicon{% if preview_mode %}-preview{% endif %}.ico" />
-  {% endblock %}
+	{% block favicon %}
+	<link rel="shortcut icon" href="/favicon{% if preview_mode %}-preview{% endif %}.ico" />
+	{% endblock %}
 
-  {% block library_css %}
+	{% block library_css %}
 
-  <link rel="stylesheet" type="text/css" href="http://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.2.0/css/bootstrap.min.css" />
+	<link rel="stylesheet" type="text/css" href="http://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.2.0/css/bootstrap.min.css" />
 
-  <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.css" />
-  <script src="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.js"></script>
+	<link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.css" />
+	<script src="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.js"></script>
 
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/0.4.0/MarkerCluster.Default.css" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/0.4.0/MarkerCluster.css" />
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/0.4.0/MarkerCluster.Default.css" />
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/0.4.0/MarkerCluster.css" />
 
-  <link rel="stylesheet" href="http://static.registerguard.com/v5/bulldog/dist/1.0.0/20150504/1/css/bulldog.min.css" />
+	<link rel="stylesheet" href="http://static.registerguard.com/v5/bulldog/dist/1.0.0/20150504/1/css/bulldog.min.css" />
 
-  <link rel="stylesheet" href="/discovery/css/discovery.css" />
-  {% endblock library_css %}
+	<link rel="stylesheet" href="/discovery/css/discovery.css" />
+	{% endblock library_css %}
+
+	<!-- [BEGIN] Chartbeat -->
+		<script type='text/javascript'>var _sf_startpt=(new Date()).getTime()</script>
+	<!-- [END] Chartbeat -->
+
+	<!-- [BEGIN] Mather Listener -->
+	<script type="text/javascript">
+		
+		(function() {
+			
+			function cookie(name) {
+				return unescape((("; " + document.cookie).split("; " + name + "=")[1] || "").split(";")[0]);
+			}
+
+			var _snaq = (window._snaq = window._snaq || []);
+			var uid = null
+			var ctx = null;
+			var c;
+
+			// Set up
+			_snaq.push(['setCollectorUrl', 'www.i.matheranalytics.com']);
+			_snaq.push(['setAppId', 'v1']);
+			_snaq.push(['setCustomerId', 'ma31425']); // Client ID
+			_snaq.push(['setMarket', '431110934']); // Market ID
+
+			_snaq.push(['setSection', '{{ app_label }}']); // Section //gSection.getName()
+			_snaq.push(['setPageType', 'dox']); // Page type (article, blog, gallery, home page, landing page, video)
+			_snaq.push(['setAuthor', '{% firstof object.author object.byline %}']); // Author
+
+			uid && _snaq.push(['setUserId', uid]);
+			_snaq.push(['enableActivityTracking', 30, 10]);
+			_snaq.push(['setPollInterval', 500]);
+			// page view must execute first
+			_snaq.push(['trackPageView', null, ctx]);
+
+			// OpenX
+			var tid;
+
+			tid = setInterval(function() {
+				if (window._ox) {
+					clearTimeout(tid);
+
+					// Enable OpenX render events
+					_ox.addHook(function(ox, props) {
+					props = ox.getProperties();
+					// send ad impression
+					_snaq.push(['trackUnstructEvent', 'Ad Impression', { eaid: props.ad_id, eenv: 'j', epid: props.adunit_id, content: props.type, server: 'openx' }]);
+				}, OX.Hooks.ON_AD_RENDER_FINISH);
+				}
+			}, 500);
+
+		})();
+
+	</script>
+	<!-- [END] Mather Listener -->
+
 
   {% block css %}{% endblock %}
 
@@ -64,8 +120,8 @@
 
   	// ROS:
   	_ox.addAdUnit('537200302'); // ROS Weather Widget
-  	_ox.addAdUnit('331937');    // ROS Column Block
-  	_ox.addAdUnit('278420');    // ROS Adicio Widget
+  	_ox.addAdUnit('331937');	// ROS Column Block
+  	_ox.addAdUnit('278420');	// ROS Adicio Widget
   	_ox.addAdUnit('537200304'); // ROS go Widget
   	_ox.addAdUnit('537200305'); // ROS Medium Rectangle 3
   	_ox.addAdUnit('537200307'); // ROS Leaderboard Bottom
@@ -90,15 +146,15 @@
   {% block google_analytics %}
   {% if GOOGLE_ANALYTICS_ID %}
   <script type="text/javascript">
-    var _gaq = _gaq || [];
-    _gaq.push(['_setAccount', '{{ GOOGLE_ANALYTICS_ID }}']);
-    _gaq.push(['_trackPageview']);
+	var _gaq = _gaq || [];
+	_gaq.push(['_setAccount', '{{ GOOGLE_ANALYTICS_ID }}']);
+	_gaq.push(['_trackPageview']);
 
-    (function() {
-      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-    })();
+	(function() {
+	  var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+	  ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+	  var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+	})();
 
   </script>
   {% endif %}
@@ -126,36 +182,79 @@
 
 {% block scripts %}
 <script>
-    $(document).ready(function() {
-        $('.navbar-nav').on('click', 'li', function() {
-            $('.navbar-nav li').removeClass('active');
-            $(this).addClass('active');
-        });
+	$(document).ready(function() {
+		$('.navbar-nav').on('click', 'li', function() {
+			$('.navbar-nav li').removeClass('active');
+			$(this).addClass('active');
+		});
 
-        {# http://www.webcoding411.com/2013/09/06/floating-return-to-top-of-page-button/ #}
-        $('.back-to-top').hide();
-        // Check to see if the window is top, if not display button
-        $(window).scroll(function () {
-            if ($(this).scrollTop() > 200) {
-                $('.back-to-top').fadeIn();
-            } else {
-                $('.back-to-top').fadeOut();
-            }
-        });
+		{# http://www.webcoding411.com/2013/09/06/floating-return-to-top-of-page-button/ #}
+		$('.back-to-top').hide();
+		// Check to see if the window is top, if not display button
+		$(window).scroll(function () {
+			if ($(this).scrollTop() > 200) {
+				$('.back-to-top').fadeIn();
+			} else {
+				$('.back-to-top').fadeOut();
+			}
+		});
 
 
-        //Click event to scroll back to top
-        $('.back-to-top').click(function () {
-            $('html, body').animate({ scrollTop: 0}, 800);
-            return false;
-        });
-    });
+		//Click event to scroll back to top
+		$('.back-to-top').click(function () {
+			$('html, body').animate({ scrollTop: 0}, 800);
+			return false;
+		});
+	});
 </script>
 {% endblock %}
 
 <div class="back-to-top">
-    <a href="#">^</a>
+	<a href="#">^</a>
 </div>
+
+<!-- [BEGIN] Chartbeat -->
+	<script type='text/javascript'>
+		var _sf_async_config = _sf_async_config || {};
+		/** CONFIGURATION START **/
+		_sf_async_config.uid = 61036;
+		_sf_async_config.domain = 'registerguard.com';
+		_sf_async_config.useCanonical = true;
+		_sf_async_config.sections = '{{ app_label }}';
+		_sf_async_config.authors = '{{ object.author }}';
+		/** CONFIGURATION END **/
+		(function() {
+			function loadChartbeat() {
+				window._sf_endpt = (new Date()).getTime();
+				var e = document.createElement('script');
+				e.setAttribute('language', 'javascript');
+				e.setAttribute('type', 'text/javascript');
+				e.setAttribute('src', '//static.chartbeat.com/js/chartbeat.js');
+				document.body.appendChild(e);
+			}
+			var oldonload = window.onload;
+			window.onload = (typeof window.onload != 'function') ?
+				loadChartbeat : function() {
+					oldonload();
+					loadChartbeat();
+				};
+		})();
+	</script>
+	<!-- [END] Chartbeat -->
+
+    <!-- [BEGIN] Mather Listener -->
+	<script type="text/javascript">
+		(function() {
+			var a = [].concat.apply([], _snaq);
+			var src = a[a.indexOf('setCustomerId') + 1] + '/' + a[a.indexOf('setMarket') + 1] + '/sp.js?cb=' + Math.round(new Date() / 1.0368e9);
+			var sp = document.createElement('script'); sp.type = 'text/javascript'; sp.async = true; sp.defer = true;
+			sp._mather_tag = document.scripts[document.scripts.length - 1]; sp._mather_sp = sp.uniqueID;
+			sp.src = ('https:' == document.location.protocol ? 'https' : 'http') + '://js.matheranalytics.com/s/' + src;
+			var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(sp, s);
+		})();
+	</script>
+	<noscript><img src='http://www.i.matheranalytics.com/i?e=pv&aid=v1&cid=ma31425&mrk=431110934&p=web&tv=no-js-0.1.0&tid={% now "U" %}' style="display:none" height="1" width="1" alt/></noscript>
+	<!-- [END] Mather Listener -->
 
 </body>
 </html>

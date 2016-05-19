@@ -57,6 +57,10 @@ DEFAULT_CONTEXT = {
     'map_height': '380px',
     'GOOGLE_ANALYTICS_ID': 'UA-882065-1',
     'datetime_now': datetime.datetime.now(),
+    'app_label': 'discovery',
+    'object': {
+        'author': 'Kelly Fenley,Joel Gorthy,Christine Sherk'
+    }
 }
 
 # Blueprint
