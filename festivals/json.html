@@ -1,5 +1,5 @@
 {{ callback }}(
-	{"festivals": [{% for data in festivals %}{% if data.start_date|format_date(none) > datetime_now %}{
+	{"festivals": [{% for data in festivals %}{% if data.start_date is defined and data.start_date|format_date(none) > datetime_now %}{
 		"name": "{{ data.name }}",
 		"start": "{{ data.start_date|format_date('%A, %B %d') }}",
 		"address": "{{ data.operator_address }}",
