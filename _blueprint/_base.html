@@ -2,6 +2,7 @@
 <html>
 <head>
 	<title>{% block title %}{{ title|striptags }}{% endblock title %}</title>
+	<meta charset="utf-8">
 
 	{% block favicon %}
 	<link rel="shortcut icon" href="/favicon{% if preview_mode %}-preview{% endif %}.ico" />
@@ -20,6 +21,7 @@
 	<link rel="stylesheet" href="http://static.registerguard.com/v5/bulldog/dist/1.0.0/20150504/1/css/bulldog.min.css" />
 
 	<link rel="stylesheet" href="/discovery/css/discovery.css" />
+
 	{% endblock library_css %}
 
 	<!-- [BEGIN] Chartbeat -->
@@ -40,6 +42,17 @@
 			var ctx = null;
 			var c;
 
+			// cookie data is in the form uid,loggedIn
+			// example: 591,true
+			
+			if ((c = cookie('syncwall-userid'))) {
+				
+				c = c.split(',');
+
+				uid = c[0];
+				ctx = { user: { loggedIn: c[1] == 'true'} };
+			}
+
 			// Set up
 			_snaq.push(['setCollectorUrl', 'www.i.matheranalytics.com']);
 			_snaq.push(['setAppId', 'v1']);
@@ -56,27 +69,30 @@
 			// page view must execute first
 			_snaq.push(['trackPageView', null, ctx]);
 
-			// OpenX
-			var tid;
+			// Subcats
+			ctx.category = { categories: [['Discovery/Discovery']] }; // array in an array
 
-			tid = setInterval(function() {
-				if (window._ox) {
-					clearTimeout(tid);
+			// CMS info
+			_snaq.push(['setSection', 'discovery']); // Section //gSection.getName()
+			_snaq.push(['setPageType', 'article']); // Page type (article, blog, gallery, home page, landing page, video)
+			_snaq.push(['setAuthor', 'Joel Gorthy']); // Author 
+			_snaq.push(['setArticlePublishTime', '2017-05-17T15:33:30-07:00']); // Pubdate (last slotted? Same as ##class(csp.rg.assets.methods.story).pubDate(gStory)?)
 
-					// Enable OpenX render events
-					_ox.addHook(function(ox, props) {
-					props = ox.getProperties();
-					// send ad impression
-					_snaq.push(['trackUnstructEvent', 'Ad Impression', { eaid: props.ad_id, eenv: 'j', epid: props.adunit_id, content: props.type, server: 'openx' }]);
-				}, OX.Hooks.ON_AD_RENDER_FINISH);
-				}
-			}, 500);
+			// Paywall
+			_snaq.push(['setPremium', true]); // Paywall true or false?
+
+			uid && _snaq.push(['setUserId', uid]);
+			_snaq.push(['enableActivityTracking', 30, 10]);
+			_snaq.push(['setPollInterval', 500]);
+			// track flow
+			_snaq.push(['setForeignDomain', 'services.registerguard.com', { paramName: 'flow_type', values: 'subscription' }]);
+			// page view must execute first
+			_snaq.push(['trackPageView', null, ctx]);
 
 		})();
 
 	</script>
 	<!-- [END] Mather Listener -->
-
 
   {% block css %}{% endblock %}
 
@@ -100,46 +116,57 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
   <meta http-equiv="content-type" content="text/html; charset=utf-8">
 
-  <!-- [BEGIN] OpenX -->
-  <link rel="stylesheet" href="http://advertising.registerguard.com/assets/hosted/css/ads.css?v=20141020">
+	<!-- [BEGIN] DFP -->
+	<link rel="stylesheet" href="http://advertising.registerguard.com/assets/hosted/css/ads.css?v=20141020">
 
-  <script src="//ox-d.registerguard.com/w/1.0/jstag"></script>
-  <script>
+	<!--// Begin Bidder //-->
+	<script type="text/javascript" src="//os4m-d.openx.net/w/1.0/jstag?nc=30582678-OS4_Bidder"></script>
+	<script type="text/javascript">
+		var googletag = googletag || {};
+		googletag.cmd = googletag.cmd || [];
+		(function() {
+		var gads = document.createElement("script");
+		gads.async = true;
+		gads.type = "text/javascript";
+		var useSSL = "https:" == document.location.protocol;
+		gads.src = (useSSL ? "https:" : "http:") + "//www.googletagservices.com/tag/js/gpt.js";
+		var node =document.getElementsByTagName("script")[0];
+		node.parentNode.insertBefore(gads, node);
+		})();
+	</script>
+	<!--// End Bidder //-->
+	
+	<script>
+		var googletag = googletag || {};
+		googletag.cmd = googletag.cmd || [];
+	</script>
 
-  	var _ox = OX();
+	<script>
 
-	// Story page:
-	_ox.addAdUnit('537200296'); // Leaderboard 1
-	_ox.addAdUnit('537200316'); // Mobile Banner
-	_ox.addAdUnit('537200298'); // Medium Rectangle 1
-	_ox.addAdUnit('537200299'); // Medium Rectangle 2
+		googletag.cmd.push(function() {
 
-	// Content Topics:
-	_ox.addContentTopic(5009, 'Discovery');
-	_ox.addContentTopic(19017, 'Outdoor Recreation');
+			// Set up size mapping
+			var mapping = googletag.sizeMapping()
+				.addSize([0, 0], [320, 50]) // Default banner is mobile banner (320x50)
+				.addSize([1005, 100], [728, 90]) // On C breakpoint (>1005px) show desktop banner (728x90)
+				.build();
 
-  	// ROS:
-  	_ox.addAdUnit('537200302'); // ROS Weather Widget
-  	_ox.addAdUnit('331937');	// ROS Column Block
-  	_ox.addAdUnit('278420');	// ROS Adicio Widget
-  	_ox.addAdUnit('537200304'); // ROS go Widget
-  	_ox.addAdUnit('537200305'); // ROS Medium Rectangle 3
-  	_ox.addAdUnit('537200307'); // ROS Leaderboard Bottom
-  	_ox.addAdUnit('537200312'); // ROS Mobile Banner Bottom
+			googletag.defineSlot('/30582678/RGM/life/discovery', [[320, 50], [728, 90]], 'leaderboard-top')
+				.setTargeting('pos', ['atf'])
+				.defineSizeMapping(mapping)
+				.addService(googletag.pubads());
 
-  	// Variables:
-  	_ox.addVariable('bp', ((window.innerWidth <= 1005) ? 'm' : 'd')); // ... return "m" or "d", where 1005px is the break point between "mobile" and "desktop".
+			googletag.pubads().setTargeting('page-type','section-front');
 
-	_ox.addVariable('s', 'life');
-	_ox.addVariable('c', 'discovery');
+			// General stuff
+			googletag.pubads().enableSingleRequest();
+			googletag.pubads().collapseEmptyDivs();
+			googletag.enableServices();
+	});
+		
+	</script>
 
-	_ox.addVariable('cms-id', '31389887');
-
-  	// Get ads:
-  	_ox.fetchAds();
-
-  </script>
-  <!-- [END] OpenX -->
+	<!-- [END] DFP -->
 
   {% endblock meta %}
 
