@@ -34,14 +34,14 @@
 					<li>{{ data.point_2 }}</li>
 					<li>{{ data.point_3 }}</li>
 					<li>{{ data.point_4|urlize }}</li>
-					{% if data.point_5 %}<li>{{ data.point_5|urlize }}</li>{% endif %}
-					{% if data.point_6 %}<li>{{ data.point_6 }}</li>{% endif %}
-					{% if data.point_7 %}<li>{{ data.point_7 }}</li>{% endif %}
-					{% if data.point_8 %}<li>{{ data.point_8 }}</li>{% endif %}
-					{% if data.point_9 %}<li>{{ data.point_9 }}</li>{% endif %}
-					{% if data.point_10 %}<li>{{ data.point_10 }}</li>{% endif %}
-					{% if data.point_11 %}<li>{{ data.point_11 }}</li>{% endif %}
-					{% if data.point_12 %}<li>{{ data.point_12 }}</li>{% endif %}
+					{% if data.point_5|length %}<li>{{ data.point_5|urlize }}</li>{% endif %}
+					{% if data.point_6|length %}<li>{{ data.point_6 }}</li>{% endif %}
+					{% if data.point_7|length %}<li>{{ data.point_7 }}</li>{% endif %}
+					{% if data.point_8|length %}<li>{{ data.point_8 }}</li>{% endif %}
+					{% if data.point_9|length %}<li>{{ data.point_9 }}</li>{% endif %}
+					{% if data.point_10|length %}<li>{{ data.point_10 }}</li>{% endif %}
+					{% if data.point_11|length %}<li>{{ data.point_11 }}</li>{% endif %}
+					{% if data.point_12|length %}<li>{{ data.point_12 }}</li>{% endif %}
 				</ul>
 			{% endif %}
 		{% endfor %}
