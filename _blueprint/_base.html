@@ -32,21 +32,21 @@
 	<script type="text/javascript">
 		
 		(function() {
-			
+
 			function cookie(name) {
 				return unescape((("; " + document.cookie).split("; " + name + "=")[1] || "").split(";")[0]);
 			}
 
 			var _snaq = (window._snaq = window._snaq || []);
 			var uid = null
-			var ctx = null;
+			var ctx = {};
 			var c;
 
 			// cookie data is in the form uid,loggedIn
 			// example: 591,true
-			
+
 			if ((c = cookie('syncwall-userid'))) {
-				
+
 				c = c.split(',');
 
 				uid = c[0];
@@ -59,31 +59,22 @@
 			_snaq.push(['setCustomerId', 'ma31425']); // Client ID
 			_snaq.push(['setMarket', '431110934']); // Market ID
 
+			// Subcats
+			ctx.category = { categories: [['Discovery/Discovery']] }; // array in an array
+
 			_snaq.push(['setSection', '{{ app_label }}']); // Section //gSection.getName()
 			_snaq.push(['setPageType', 'article']); // Page type (article, blog, gallery, home page, landing page, video)
 			_snaq.push(['setAuthor', '{{ object.author }}']); // Author
+			_snaq.push(['setArticlePublishTime', '2017-05-17T15:33:30-07:00']); // Pubdate (last slotted? Same as ##class(csp.rg.assets.methods.story).pubDate(gStory)?)
+
+			// Paywall
+			_snaq.push(['setPremium', false]); // Paywall true or false?
 
 			uid && _snaq.push(['setUserId', uid]);
 			_snaq.push(['enableActivityTracking', 30, 10]);
 			_snaq.push(['setPollInterval', 500]);
 			// page view must execute first
-			_snaq.push(['trackPageView', null, ctx]);
 
-			// Subcats
-			ctx.category = { categories: [['Discovery/Discovery']] }; // array in an array
-
-			// CMS info
-			_snaq.push(['setSection', 'discovery']); // Section //gSection.getName()
-			_snaq.push(['setPageType', 'article']); // Page type (article, blog, gallery, home page, landing page, video)
-			_snaq.push(['setAuthor', 'Joel Gorthy']); // Author 
-			_snaq.push(['setArticlePublishTime', '2017-05-17T15:33:30-07:00']); // Pubdate (last slotted? Same as ##class(csp.rg.assets.methods.story).pubDate(gStory)?)
-
-			// Paywall
-			_snaq.push(['setPremium', true]); // Paywall true or false?
-
-			uid && _snaq.push(['setUserId', uid]);
-			_snaq.push(['enableActivityTracking', 30, 10]);
-			_snaq.push(['setPollInterval', 500]);
 			// track flow
 			_snaq.push(['setForeignDomain', 'services.registerguard.com', { paramName: 'flow_type', values: 'subscription' }]);
 			// page view must execute first
