@@ -173,6 +173,15 @@ h5 {
 	margin-top: -51px;
 }
 
+h3.label {
+	color: #d98300;
+	font-size: 135%;
+	padding: 0;
+    margin: 1em 0 .5em 0;
+    display: block;
+    text-align: left;
+}
+
 /* Discovery Tarbell project CSS */
 #map {
 	margin-bottom: 6px;

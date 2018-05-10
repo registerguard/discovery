@@ -9,11 +9,8 @@
 			<div id="loc">
 				<hgroup>
 					<div class="streamer">
-						<h1>
-							<a href="http://registerguard.com/rg/life/discovery/">Discovery</a>
-						</h1>
 						<h2>
-							<a href="/discovery/">Adventure guide</a>
+							<a href="http://registerguard.com/rg/life/discovery/">Discovery</a> <a href="/discovery/">Adventure guide</a>
 						</h2>
 					</div>
 				</hgroup>
@@ -26,8 +23,8 @@
 		{% for data in campgrounds %}
 			{% if data.area != previous_area %}<h3 class="label">{{ data.area }}</h3>{% endif %}
 			{% set previous_area = data.area %}
-			<h5 id="{{ data.id }}">{{ data.name }}</h5>
-			<h2 class="sh6">{{ data.operator }}</h2>
+			<h2 id="{{ data.id }}">{{ data.name }}</h2>
+			<h3 class="sh6">{{ data.operator }}</h3>
 			<ul class="li2">
 				<li>{{ data.point_1 }}</li>
 				<li>{{ data.point_2 }}</li>
