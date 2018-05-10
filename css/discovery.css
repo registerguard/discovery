@@ -249,6 +249,19 @@ a {
 	margin-bottom: inherit;
 }
 
+.row {
+	margin-bottom: 1.5em;
+	text-align: center;
+}
+
+div.row h5 a {
+	font-family: "Rubik","Helvetica Neue","Helvetica","Roboto","Arial",sans-serif;
+	font-weight: 500;
+}
+
+div.row h5 {
+	padding-top: 0;
+}
 /*
 Moving Bootstrap's navbar collapse point via:
 http://www.bootply.com/120604#

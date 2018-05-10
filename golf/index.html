@@ -1,16 +1,19 @@
-{% extends "_base.html" %}
+{% extends "_base_gh.html" %}
 
 {% block title %}{{ super() }} | Lane County area golf courses{% endblock %}
 
 {% block content %}
 <div class="container">
 	<div class="jumbotron">
+
+		{% block nav_gh %}{{ super() }}{% endblock nav_gh %}
+
 		<header>
 			<div id="loc">
 				<hgroup>
 					<div class="streamer">
 						<h2>
-							<a href="http://registerguard.com/rg/life/discovery/">Discovery</a> <a href="/discovery/">Adventure guide</a>
+							<a href="http://www.registerguard.com/lifestyle/discovery">Discovery</a> <a href="/discovery/">Adventure guide</a>
 						</h2>
 					</div>
 				</hgroup>

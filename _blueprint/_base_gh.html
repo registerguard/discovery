@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 	<head>
@@ -132,7 +131,7 @@ var dataLayer = dataLayer || [];
 	vendor:{
 	  mather: {
 		categories: '["section"]',
-		  ArticlePublishTime:"2018-05-10T20:08:13+0000",
+		ArticlePublishTime:"2018-05-10T20:08:13+0000",
 		customerId: 'ma15895',
 		market: '61474093'
 	  }
@@ -177,10 +176,6 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 	</head>
 
 	<body {% block bodyattrs %}class="page-{{ PATH[:-5] }}"{% endblock bodyattrs %}>
-
-	{% block nav %}
-		{% include "_nav.html" %}
-	{% endblock nav %}
  
 		<div id="fb-root"></div>
 		<div id="wrapper-main">
@@ -242,8 +237,37 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 					<section class="section-general fullWidth">
 						<div class="inner">
 
+{% block content %}
 
-{% block content %}{% endblock content %}
+	{% block nav_gh %}
+		<div class="row">
+			<div class="col-md-2">
+				<h5><a href="../breweries/">Breweries</a></h5>
+			</div>
+
+			<div class="col-md-2">
+				<h5><a href="../campgrounds/">Campgrounds</a></h5>
+			</div>
+
+			<div class="col-md-2">
+				<h5><a href="../festivals/">Festivals</a></h5>
+			</div>
+
+			<div class="col-md-2">
+				<h5><a href="../golf/">Golf</a></h5>
+			</div>
+
+			<div class="col-md-2">
+				<h5><a href="../museums/">Museums</a></h5>
+			</div>
+
+			<div class="col-md-2">
+				<h5><a href="../wineries/">Wineries</a></h5>
+			</div>
+		</div> <!-- /.row -->
+	{% endblock nav_gh %}
+
+{% endblock content %}
 
 						</div>
 					</section>
@@ -332,9 +356,9 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <script>
 (function(s, p, d) {
   var h=d.location.protocol, i=p+"-"+s,
-      e=d.getElementById(i), r=d.getElementById(p+"-root"),
-      u=h==="https:"?"d1z2jf7jlzjs58.cloudfront.net"
-      :"static."+p+".com";
+	  e=d.getElementById(i), r=d.getElementById(p+"-root"),
+	  u=h==="https:"?"d1z2jf7jlzjs58.cloudfront.net"
+	  :"static."+p+".com";
   if (e) return;
   e = d.createElement(s); e.id = i; e.async = true;
   e.src = h+"//"+u+"/p.js"; r.appendChild(e);
