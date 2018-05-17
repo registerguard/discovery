@@ -6,7 +6,7 @@
 <dps:Discovery\:dsc\_head\_list=<BasedOn:NormalParagraphStyle><Nextstyle:Discovery\:dsc\_italic\_list><cc:RG\_Black\_60><ct:Black><cs:9.500000><cf:Franklin ITC Std><cstrikeoff:2.833333><cstrikewoff:0.424896><pga:BaseLine>>
 <dps:Discovery\:dsc\_reverse\_box\_type\_oneline=<Nextstyle:Discovery\:dsc\_head\_list><cc:Paper><ct:Black><cs:9.000000><cbs:-2.500000><pli:6.000000><pri:6.000000><palp:1.000000><cl:10.000000><psa:11.000000><cf:Franklin ITC Std><prbc:Black><prbs:20.000000><prbo:-10.000000><prbon:1><pta:Center><pga:BaseLine><bnc:None><nmf:\<TextFont\>>>
 <sstable:=<RG\_Oxford:STRIPE:0,0.45,0.46,0.08999999999999997>>
-{% for data in wineries %}{% if data.area != previous_area %}{% if not loop.first %}<pstyle:Discovery\:dsc\_head\_list>
+{% for data in distilleries %}{% if data.area != previous_area %}{% if not loop.first %}<pstyle:Discovery\:dsc\_head\_list>
 {% endif %}<pstyle:Discovery\:dsc\_reverse\_box\_type\_oneline>{{ data.area }}
 {% else %}<pstyle:Discovery\:dsc\_head\_list>
 {% endif %}<pstyle:Discovery\:dsc\_head\_list>{{ data.name }}
