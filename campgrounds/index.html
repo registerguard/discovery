@@ -26,7 +26,7 @@
 		{% for data in campgrounds %}
 			{% if data.area != previous_area %}<h3 class="label">{{ data.area }}</h3>{% endif %}
 			{% set previous_area = data.area %}
-			<h2 id="{{ data.id }}">{{ data.name }}</h2>
+			<h2 class="anchor" id="{{ data.id }}">{{ data.name }}</h2>
 			<h3 class="sh6">{{ data.operator }}</h3>
 			<ul class="li2">
 				<li>{{ data.point_1 }}</li>

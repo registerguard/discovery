@@ -71,6 +71,14 @@ category: generalwrapper
 		img:not([src*=gstatic]):not([src*=google]) {
 			max-height: none !important;
 		}
+
+		{# offsetting an html anchor to adjust for fixed header #}
+		{# https://stackoverflow.com/questions/10732690/offsetting-an-html-anchor-to-adjust-for-fixed-header#answer-13881860 #}
+		h2.anchor {
+			padding-top: 60px;
+			margin-top: -50px;
+			display: inline-block;
+		}
 	</style>
 
 	{% endblock library_css %}
