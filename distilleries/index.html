@@ -31,9 +31,9 @@
 				<h3 class="sh6">{{ data.operator_address }}</h3>
 				<ul class="li2">
 					<li>{{ data.point_1 }}</li>
-					<li>{{ data.point_2 }}</li>
-					<li>{{ data.point_3 }}</li>
-					<li>{{ data.point_4|urlize }}</li>
+					<li>{{ data.point_2|urlize }}</li>
+					{% if data.point_3 %}<li>{{ data.point_3|urlize }}</li>{% endif %}
+					{% if data.point_4 %}<li>{{ data.point_4|urlize }}</li>{% endif %}
 					{% if data.point_5 %}<li>{{ data.point_5|urlize }}</li>{% endif %}
 					{% if data.point_6 %}<li>{{ data.point_6 }}</li>{% endif %}
 					{% if data.point_7 %}<li>{{ data.point_7|urlize }}</li>{% endif %}
